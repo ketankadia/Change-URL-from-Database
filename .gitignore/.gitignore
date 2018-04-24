@@ -69,3 +69,50 @@ $data_ids = new WP_Query(array(
 
           	<?php endwhile;?>
             <?php endif;?>
+=====================================
+<?php 
+/**/
+Create WP Themes 
+http://underscores.me/
+https://github.com/devinsays/options-framework-theme
+
+/*Custom post*/
+https://css-tricks.com/creating-meet-team-page-wordpress/
+https://css-tricks.com
+-------
+https://generatewp.com/post-type/
+Post Type Generator
+-----------
+/*Add Shortcode*/
+add_shortcode( 'home_banner_date_and_cash', 'home_banner_date_cash' );
+
+function home_banner_date_cash( $atts ){ 
+  
+ ob_start();
+ global $cash;
+ $cash = $atts['cash'];
+ get_template_part( 'inc/inc-home-banner-date-cash' );
+ 
+ return ob_get_clean(); 
+ 
+}
+
+/*SHortcode-2*/
+function bartag_func( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'foo' => 'no foo',
+			'bar' => 'default bar',
+		), $atts, 'bartag' );
+
+	return 'bartag: ' . $atts['foo'] . ' ' . $atts['bar'];
+}
+add_shortcode( 'bartag', 'bartag_func' );
+
+o/p:[bartag foo="koala" bar="bears"]
+
+-------------
+1.Not display UPDATE plugin :
+define('DISALLOW_FILE_MODS',true);
+
+
